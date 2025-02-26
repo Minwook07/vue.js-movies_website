@@ -2,7 +2,7 @@
     <section class="py-5">
         <div class="container">
             <div class="card-type-all">
-                <a href="./../../assets/pages/allcategories.html"
+                <a href="./@/assets/pages/allcategories.html"
                     class="card-type-catagories text-secondary-kam">Trending
                     Movies</a>
                 <div class="d-flex gap-3">

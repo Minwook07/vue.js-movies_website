@@ -130,7 +130,7 @@
                             <div class="dropdown">
                                 <button class="btn border-0" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    <img src="../../assets/img/playlist-add.svg" class="img-fluid" alt="">
+                                    <img src="@/assets/img/playlist-add.svg" class="img-fluid" alt="">
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -319,7 +319,7 @@
                     <div class="row align-items-center mb-5">
                         <div class="col-2 col-lg-1">
                             <a href="#"><img class="border-0 rounded-3 "
-                                    style="width: 50px;height: 50px; object-fit: cover;" src="../../assets/img/rose-pf.jpg"
+                                    style="width: 50px;height: 50px; object-fit: cover;" src="@/assets/img/rose-pf.jpg"
                                     alt=""></a>
                         </div>
                         <div class="col-10 col-lg-11">
@@ -336,7 +336,7 @@
                             <div class="col-lg-1 col-2">
                                 <a href="#"><img class="border-0 rounded-3 "
                                         style="width: 50px;height: 50px; object-fit: cover;"
-                                        src="../../assets/img/rose-pf.jpg" alt=""></a>
+                                        src="@/assets/img/rose-pf.jpg" alt=""></a>
                             </div>
 
                             <div class="col-lg-11 col-10">
@@ -364,7 +364,7 @@
                                         <div class="d-flex pt-3">
                                             <a href="#"><img class="border-0 rounded-3 "
                                                     style="width: 50px;height: 50px; object-fit: cover;"
-                                                    src="../../assets/img/rose-pf.jpg" alt=""></a>
+                                                    src="@/assets/img/rose-pf.jpg" alt=""></a>
                                             <div class="form-floating w-100">
                                                 <textarea class="form-control input-reply shadow-none"
                                                     placeholder="Add a reply" id="floatingTextarea21"></textarea>
@@ -383,7 +383,7 @@
                             <div class="col-lg-1 col-2">
                                 <a href="#"><img class="border-0 rounded-3 "
                                         style="width: 50px;height: 50px; object-fit: cover;"
-                                        src="../../assets/img/rose-pf.jpg" alt=""></a>
+                                        src="@/assets/img/rose-pf.jpg" alt=""></a>
                             </div>
 
                             <div class="col-lg-11 col-10">
@@ -411,7 +411,7 @@
                                         <div class="d-flex pt-3">
                                             <a href="#"><img class="border-0 rounded-3 "
                                                     style="width: 50px;height: 50px; object-fit: cover;"
-                                                    src="../../assets/img/rose-pf.jpg" alt=""></a>
+                                                    src="@/assets/img/rose-pf.jpg" alt=""></a>
                                             <div class="form-floating w-100">
                                                 <textarea class="form-control input-reply shadow-none"
                                                     placeholder="Add a reply" id="floatingTextarea22"></textarea>
@@ -461,7 +461,7 @@
                                         <li class="d-flex align-items-center border-bt-customize">
                                             <div class="items-image w-25 me-3">
                                                 <a href="#">
-                                                    <img src="../../assets/img/Crash_Landing_on_You_main_poster.jpg"
+                                                    <img src="@/assets/img/Crash_Landing_on_You_main_poster.jpg"
                                                         class="img-fluid" alt="thumnail">
                                                 </a>
                                             </div>
@@ -488,7 +488,7 @@
                                         <li class="d-flex align-items-center border-bt-customize">
                                             <div class="items-image w-25 me-3">
                                                 <a href="#">
-                                                    <img src="../../assets/img/Crash_Landing_on_You_main_poster.jpg"
+                                                    <img src="@/assets/img/Crash_Landing_on_You_main_poster.jpg"
                                                         class="img-fluid" alt="thumnail">
                                                 </a>
                                             </div>
@@ -515,7 +515,7 @@
                                         <li class="d-flex align-items-center border-bt-customize">
                                             <div class="items-image w-25 me-3">
                                                 <a href="#">
-                                                    <img src="../../assets/img/Crash_Landing_on_You_main_poster.jpg"
+                                                    <img src="@/assets/img/Crash_Landing_on_You_main_poster.jpg"
                                                         class="img-fluid" alt="thumnail">
                                                 </a>
                                             </div>
@@ -542,7 +542,7 @@
                                         <li class="d-flex align-items-center border-bt-customize">
                                             <div class="items-image w-25 me-3">
                                                 <a href="#">
-                                                    <img src="../../assets/img/Crash_Landing_on_You_main_poster.jpg"
+                                                    <img src="@/assets/img/Crash_Landing_on_You_main_poster.jpg"
                                                         class="img-fluid" alt="thumnail">
                                                 </a>
                                             </div>
@@ -569,7 +569,7 @@
                                         <li class="d-flex align-items-center border-bt-customize">
                                             <div class="items-image w-25 me-3">
                                                 <a href="#">
-                                                    <img src="../../assets/img/Crash_Landing_on_You_main_poster.jpg"
+                                                    <img src="@/assets/img/Crash_Landing_on_You_main_poster.jpg"
                                                         class="img-fluid" alt="thumnail">
                                                 </a>
                                             </div>

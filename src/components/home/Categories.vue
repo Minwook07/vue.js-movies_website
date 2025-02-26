@@ -16,7 +16,7 @@
                         <a href="drama-detail.html">
                             <div class="card-content position-relative rounded-3">
                                 <div class="card-content-img">
-                                    <img class="card-content-img" src="../../assets/img/Mouse.jpg" alt="Mouse.jpg">
+                                    <img class="card-content-img" src="@/assets/img/Mouse.jpg" alt="Mouse.jpg">
                                 </div>
                                 <div class="overlay"></div>
                             </div>

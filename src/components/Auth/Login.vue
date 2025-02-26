@@ -2,7 +2,7 @@
     <section class="fixed-top">
         <div class="container">
             <a class="navbar-brand m-auto text-success fw-bold fs-2" href="/index.html">
-                <img src="../img/3kam_logo.png" width="100px" alt="">
+                <img src="@/assets/img/3kam_logo.png" width="100px" alt="">
             </a>
         </div>
     </section>
@@ -60,13 +60,13 @@
                         </div>
                         <div class="col-6">
                             <a href="#!" class="btn btn-lg btn-danger social-btn py-3">
-                                <img src="../../assets/img/google-brands-solid.svg" style="width: 20px;" alt="">
+                                <img src="@/assets/img/google-brands-solid.svg" style="width: 20px;" alt="">
                                 <span class="ms-2 fs-6 d-none d-sm-flex">Google</span>
                             </a>
                         </div>
                         <div class="col-6">
                             <a href="#!" class="btn btn-lg btn-primary social-btn py-3">
-                                <img src="../../assets/img/facebook-f-brands-solid.svg" style="width: 12px;" alt="">
+                                <img src="@/assets/img/facebook-f-brands-solid.svg" style="width: 12px;" alt="">
                                 <span class="ms-2 fs-6 d-none d-sm-flex">Facebook</span>
                             </a>
                         </div>
