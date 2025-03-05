@@ -15,19 +15,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav m-auto mb-2 mb-lg-0 gap-0 gap-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link pc-1 active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link nav-link-dropdown pc-1" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Drama
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item fs-paragrap-default" href="#">Chinese Drama</a></li>
-                            <li><a class="dropdown-item fs-paragrap-default" href="#">Korean Drama</a></li>
-                            <li><a class="dropdown-item fs-paragrap-default" href="#">Khmer Drama</a></li>
-                            <li><a class="dropdown-item fs-paragrap-default" href="#">Japanese Drama</a></li>
-                        </ul>
+                        <RouterLink class="nav-link pc-1 active" aria-current="page" to="/">Home</RouterLink>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-link-dropdown pc-1" href="#" role="button" data-bs-toggle="dropdown"
@@ -35,17 +23,17 @@
                             Movies
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item fs-paragrap-default" href="#">Chinese Movies</a></li>
-                            <li><a class="dropdown-item fs-paragrap-default" href="#">Korean Movies</a></li>
-                            <li><a class="dropdown-item fs-paragrap-default" href="#">Khmer Movies</a></li>
-                            <li><a class="dropdown-item fs-paragrap-default" href="#">Japanese Movies</a></li>
+                            <li><RouterLink class="dropdown-item fs-paragrap-default" to="/all_chinese">Chinese Movies</RouterLink></li>
+                            <li><RouterLink class="dropdown-item fs-paragrap-default" to="/all_korean">Korean Movies</RouterLink></li>
+                            <li><RouterLink class="dropdown-item fs-paragrap-default" to="#">Khmer Movies</RouterLink></li>
+                            <li><RouterLink class="dropdown-item fs-paragrap-default" to="/all_japanese">Japanese Movies</RouterLink></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pc-1" aria-current="page" href="#">Popular</a>
+                        <RouterLink class="nav-link pc-1" aria-current="page" to="/all_trending">Trending</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pc-1" aria-current="page" href="#">About us</a>
+                        <RouterLink class="nav-link pc-1" aria-current="page" to="#">About us</RouterLink>
                     </li>
                 </ul>
                 <form class="d-flex align-items-center position-relative" role="search">
@@ -62,6 +50,4 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
-
-
 </script>

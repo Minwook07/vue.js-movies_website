@@ -21,7 +21,7 @@
                                 <div class="overlay"></div>
                             </div>
                             <button
-                                class="text-start btn p-0 border-0 fw-medium text-secondary-kam fs-5 mt-2">{{ drama.type }}</button>
+                                class="text-start btn p-0 border-0 fw-medium text-secondary-kam fs-5 mt-2">{{ drama.genre }}</button>
                         </a>
                     </div>
                 </div>

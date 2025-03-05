@@ -2,7 +2,7 @@
     <section class="py-5">
         <div class="container">
             <div class="card-type-all">
-                <RouterLink to="/drama_details" class="card-type-catagories text-secondary-kam">Trending
+                <RouterLink to="/all_trending" class="card-type-catagories text-secondary-kam">Trending
                     Movies</RouterLink>
                 <div class="d-flex gap-3">
                     <button type="button" data-swiper-id="1" class="btn btn-outline-success btn-previous"><i

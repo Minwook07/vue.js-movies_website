@@ -1,12 +1,12 @@
 <template>
     <section class="py-5">
         <div class="container">
-            <h5 class="mb-5"><span class="text-light bg-success rounded-1 py-2 px-4 fw-normal">Ongoing Movies</span>
+            <h5 class="mb-5"><span class="text-light bg-success rounded-1 py-2 px-4 fw-normal">Korean Movies</span>
             </h5>
             <div class="row">
                 <div v-for="drama in paginatedDramas" :key="drama.id" class="col-6 col-md-2 mb-4">
                     <div class="card-content position-relative rounded-3">
-                        <RouterLink :to="'/drama_details/' + drama.id">
+                        <RouterLink to="/drama_details">
                             <div class="card-content-img">
                                 <img :src="drama.image" :alt="drama.title" class="card-content-img">
                             </div>
@@ -25,7 +25,7 @@
                             {{ drama.status }}
                         </RouterLink>
                         <br>
-                        <RouterLink :to="'/drama_details/' + drama.id"
+                        <RouterLink to="/drama_details"
                             class="text-start btn p-0 border-0 fw-medium text-secondary-kam">
                             {{ drama.title }}
                         </RouterLink>
@@ -63,19 +63,19 @@ const perPage = 12;
 const currentPage = ref(1);
 
 // Get ongoing dramas
-const ongoingDramas = computed(() =>
-    dramaStore.drama_lists.filter(drama => drama.status === 'Ongoing')
+const countryDramas = computed(() =>
+    dramaStore.drama_lists.filter(drama => drama.country === 'korean')
 );
 
 // Calculate total pages
 const totalPages = computed(() =>
-    Math.ceil(ongoingDramas.value.length / perPage)
+    Math.ceil(countryDramas.value.length / perPage)
 );
 
 // Get paginated dramas for the current page
 const paginatedDramas = computed(() => {
     const start = (currentPage.value - 1) * perPage;
-    return ongoingDramas.value.slice(start, start + perPage);
+    return countryDramas.value.slice(start, start + perPage);
 });
 
 // Jump to first page

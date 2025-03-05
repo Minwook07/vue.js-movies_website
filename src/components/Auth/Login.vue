@@ -1,9 +1,9 @@
 <template>
     <section class="fixed-top">
         <div class="container">
-            <a class="navbar-brand m-auto text-success fw-bold fs-2" href="/index.html">
+            <RouterLink class="navbar-brand m-auto text-success fw-bold fs-2" to="/">
                 <img src="@/assets/img/3kam_logo.png" width="100px" alt="">
-            </a>
+            </RouterLink>
         </div>
     </section>
     <section>
