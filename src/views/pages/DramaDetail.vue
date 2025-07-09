@@ -1,42 +1,5 @@
 <template>
     <BannerHeroPlay />
-
-    <!-- Server -->
-    <section class="my-4">
-        <div class="container">
-            <div class="container-server">
-                <div class="row g-lg-0 g-4 align-items-center">
-                    <div class="col-lg-3 d-flex align-items-center">
-                        <p class="fs-paragrap-default m-0 text-light">You're watching <span
-                                class="text-primary-kam">Episode
-                                1</span>. <br><span class="opacity-75">If current servers doesn't work, please try other
-                                servers.</span></p>
-                    </div>
-                    <div class="col-12 col-lg-6 d-flex align-items-center block-border-left">
-                        <div class="gap-3 d-flex flex-column ms-3">
-                            <div class="d-flex align-items-center">
-                                <h5 class="text-primary-kam m-0 me-3">SUB</h5>
-                                <div class="d-flex gap-3 justify-content-md-end">
-                                    <button class="btn btn-success active" type="button">Server1</button>
-                                    <button class="btn btn-info" type="button">Server 2</button>
-                                    <button class="btn btn-info" type="button">Server 3</button>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <h5 class="active m-0 me-3 text-light">DUB</h5>
-                                <div class="d-flex gap-3 justify-content-md-end">
-                                    <button class="btn btn-success active" type="button">Server1</button>
-                                    <button class="btn btn-info" type="button">Server 2</button>
-                                    <button class="btn btn-info" type="button">Server 3</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Detail Description -->
     <section class="my-4">
         <div class="container">
@@ -121,7 +84,7 @@
                         <div class="col-lg-5">
                             <div class="row g-4">
                                 <!-- Main Details -->
-                                <div class="col-md-7 col-lg-12">
+                                <div class="col-md-12 col-lg-12">
                                     <div class="details-card bg-dark bg-opacity-25 rounded-3 p-4 h-100">
                                         <h3 class="text-white fw-semibold mb-4 d-flex align-items-center">
                                             <i class="bi bi-info-circle me-2"></i>
@@ -218,15 +181,14 @@
             </div>
         </div>
     </section>
-
     <Casting />
     <SimilarVideo />
 </template>
 
 <script setup>
-import BannerHeroPlay from './movie-detail/BannerHeroPlay.vue';
-import Casting from './movie-detail/Casting.vue';
-import SimilarVideo from './movie-detail/SimilarVideo.vue';
+import BannerHeroPlay from './drama-detail/BannerHeroPlay.vue';
+import Casting from './drama-detail/Casting.vue';
+import SimilarVideo from './drama-detail/SimilarVideo.vue';
 import { Calendar, Clock, Globe, Heart, Plus, Share2, User } from 'lucide-vue-next'
 </script>
 <style scoped>

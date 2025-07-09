@@ -547,6 +547,21 @@ textarea {
   overflow: hidden;
 }
 
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: black;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.video-js {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .controls-section {
   padding: 2rem;
 }
