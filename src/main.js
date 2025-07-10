@@ -3,7 +3,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '@/assets/css/main.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@splidejs/splide/dist/css/splide.min.css';
-import '@videodb/player-vue/dist/style.css'
 import 'swiper/css/bundle';
 
 import { createApp } from 'vue'
