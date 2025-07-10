@@ -137,7 +137,7 @@ const seriesData = {
         {
             id: 1,
             title: "Crash Landing on You",
-            image: "/public/img/Crash_Landing_on_You_main_poster.jpg",
+            image: "/img/Crash_Landing_on_You_main_poster.jpg",
             genres: ["Romance", "Drama", "Comedy"],
             rating: 4.8,
             year: "2024",
@@ -146,7 +146,7 @@ const seriesData = {
         {
             id: 2,
             title: "Battle Through The Heavens Season 5",
-            image: "/public/img/battle_through_the_heavens2.jpg",
+            image: "/img/battle_through_the_heavens2.jpg",
             genres: ["Action", "Adventure", "Martial Art", "Romance"],
             rating: 4.5,
             year: "2024",
@@ -155,7 +155,7 @@ const seriesData = {
         {
             id: 3,
             title: "May It Please the Court",
-            image: "/public/img/May_It_Please_the_Court_2022.jpg",
+            image: "/img/May_It_Please_the_Court_2022.jpg",
             genres: ["Thriller", "Drama", "Revenge"],
             rating: 4.7,
             year: "2024",
@@ -164,7 +164,7 @@ const seriesData = {
         {
             id: 4,
             title: "Vincenzo",
-            image: "/public/img/Vincenzo_2021.jpg",
+            image: "/img/Vincenzo_2021.jpg",
             genres: ["Thriller", "Drama", "Survival"],
             rating: 4.9,
             year: "2021",
@@ -173,7 +173,7 @@ const seriesData = {
         {
             id: 5,
             title: "Doom at your service",
-            image: "/public/img/Doom_at_your_service.jpg",
+            image: "/img/Doom_at_your_service.jpg",
             genres: ["Horror", "Comedy", "Mystery"],
             rating: 4.6,
             year: "2024",
@@ -184,7 +184,7 @@ const seriesData = {
         {
             id: 6,
             title: "Cheo Yong",
-            image: "/public/img/Cheo_Yong_Drama_Series_2014.jpg",
+            image: "/img/Cheo_Yong_Drama_Series_2014.jpg",
             genres: ["Sci-Fi", "Horror", "Drama"],
             rating: 4.8,
             year: "2014",
@@ -193,7 +193,7 @@ const seriesData = {
         {
             id: 7,
             title: "Doctor Stranger",
-            image: "/public/img/DoctorStranger2014.jpg",
+            image: "/img/DoctorStranger2014.jpg",
             genres: ["Fantasy", "Action", "Adventure"],
             rating: 4.4,
             year: "2024",
@@ -204,7 +204,7 @@ const seriesData = {
         {
             id: 8,
             title: "Tales of Demons and Gods",
-            image: "/public/img/tales_of_demons and gods.jpg",
+            image: "/img/tales_of_demons and gods.jpg",
             genres: ["Crime", "Drama", "Thriller"],
             rating: 4.9,
             year: "2008-2013",
@@ -213,7 +213,7 @@ const seriesData = {
         {
             id: 9,
             title: "Spirit Sword Sovereign",
-            image: "/public/img/Spirit-Sword-Sovereign.webp",
+            image: "/img/Spirit-Sword-Sovereign.webp",
             genres: ["Fantasy", "Drama", "Action"],
             rating: 4.7,
             year: "2011-2019",

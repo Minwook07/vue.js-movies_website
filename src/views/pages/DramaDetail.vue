@@ -11,7 +11,7 @@
                             <div class="d-flex flex-column flex-md-row gap-4">
                                 <!-- Poster Image -->
                                 <div class="poster-container position-relative" style="min-width: 180px;">
-                                    <img src="/public/img/Abyss.jpg" alt="Spy x Family Poster"
+                                    <img src="/img/Abyss.jpg" alt="Spy x Family Poster"
                                         class="img-fluid rounded-3"
                                         style="width: 180px; height: 240px; object-fit: cover;">
                                     <!-- Action Buttons -->
@@ -20,7 +20,7 @@
                                             <div class="d-flex flex-wrap gap-3 justify-content-md-start">
                                                 <!-- Watch now Button -->
                                                 <button type="button"
-                                                    class="btn btn-primary btn-sm d-flex align-items-center justify-content-center px-2 py-2 rounded-pill"
+                                                    class="btn btn-info btn-sm d-flex align-items-center justify-content-center px-2 py-2 rounded-pill"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Add to List">
                                                     <Plus :size="18" />

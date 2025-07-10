@@ -34,7 +34,7 @@
                             <!-- Load More Button -->
                             <div class="text-center mt-4" v-if="hasMoreCast">
                                 <button @click="loadMoreCast" :disabled="loading"
-                                    class="btn btn-outline-primary btn-lg load-more-btn">
+                                    class="btn btn-outline-warning btn-sm load-more-btn">
                                     <span v-if="loading" class="spinner-border spinner-border-sm me-2"></span>
                                     {{ loading ? 'Loading...' : 'View More Cast' }}
                                 </button>
@@ -48,8 +48,9 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-
+const router = useRouter()
 const loading = ref(false)
 const hasMoreCast = ref(true)
 
@@ -145,21 +146,7 @@ const loadMoreCast = async () => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500))
 
-    // Add more cast members (simulated)
-    const moreCast = [
-        {
-            id: 999,
-            name: 'Additional Actor',
-            character: 'Supporting Character',
-            roleType: 'Guest Role',
-            image: '/placeholder.svg?height=200&width=150',
-            profileUrl: '/people/999-additional-actor',
-            characterUrl: '/character/supporting-character',
-            drama: 'Doom at Your Service Korean Drama (2021)'
-        }
-    ]
-
-    castMembers.value.push(...moreCast)
+    router.push('/')
     loading.value = false
     hasMoreCast.value = false // No more cast to load
 }
@@ -304,7 +291,7 @@ const loadMoreCast = async () => {
 
 .load-more-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 5px 25px rgba(25, 135, 84, 0.3);
 }
 @media (max-width: 1024px) {
     .cast-grid {

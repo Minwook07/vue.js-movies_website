@@ -12,7 +12,7 @@
                             </div>
                             <div class="play-video"></div>
                             <div class="card-languages"
-                                :class="drama.language == 'Eng Sub' ? 'bg-danger' : 'bg-success'">
+                                :class="drama.language == 'Eng Sub' ? 'bg-warning' : 'bg-success'">
                                 {{ drama.language }}
                             </div>
                             <div class="card-trending-fire"></div>

@@ -9,7 +9,7 @@
                         <div class="video-container">
                             <video ref="videoRef" class="video-js vjs-default-skin" controls preload="auto" width="640"
                                 height="264" data-setup="{}">
-                                <!-- <source src="/public/mp4/모모랜드(MOMOLAND)-BAAM(EDMRemix)[MusicVideo].mp4"
+                                <!-- <source src="/mp4/모모랜드(MOMOLAND)-BAAM(EDMRemix)[MusicVideo].mp4"
                                     type="video/mp4" /> -->
                                 <track kind="subtitles" src="https://yourdomain.com/subtitles-en.vtt" srclang="en"
                                     label="English" default />
@@ -59,7 +59,7 @@
                             <h3 class="playlist-title">Playlist</h3>
                             <div class="d-flex align-items-center">
                                 <span class="status-dot me-2"></span>
-                                <small class="text-light">AI Multi Sub</small>
+                                <small class="text-light">Multi Sub</small>
                             </div>
                         </div>
 
@@ -101,7 +101,7 @@ const episodes = computed(() =>
     Array.from({ length: 16 }, (_, i) => ({
         number: i + 1,
         title: `Episode ${String(i + 1).padStart(2, '0')}`,
-        src: `/public/mp4/episode-${String(i + 1).padStart(2, '0')}.mp4`,
+        src: `/mp4/episode-${String(i + 1).padStart(2, '0')}.mp4`,
     }))
 )
 

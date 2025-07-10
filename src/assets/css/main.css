@@ -399,7 +399,7 @@ input:valid+.label-floating {
     padding: 2px 5px;
     line-height: normal;
     border-radius: 3px;
-    background-color: red;
+    background-color: #ffc107;
 }
 
 .card-trending-fire {
@@ -612,7 +612,7 @@ textarea {
 .status-dot {
   width: 8px;
   height: 8px;
-  background-color: #f97316;
+  background-color: #ffc107;
   border-radius: 50%;
 }
 
@@ -641,9 +641,9 @@ textarea {
 }
 
 .episode-btn.active {
-  background: rgba(249, 115, 22, 0.2);
-  border-color: rgba(249, 115, 22, 0.5);
-  color: #fb923c;
+  background: rgba(255, 193, 7, 0.2);
+  border-color: rgba(255, 193, 7, 0.5);
+  color: #ffc107;
 }
 
 .episode-number {
@@ -694,10 +694,18 @@ textarea {
   }
 }
 
+footer .gradient-text {
+  background: linear-gradient(to right, #198754, #ffc107);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* For Firefox */
+  color: transparent;
+}
+
 footer .icon-ft {
     width: 40px;
     height: 40px;
-    background-color: red;
+    background-color: #ffc107;
     border-radius: 100%;
     display: flex;
     justify-content: center;
