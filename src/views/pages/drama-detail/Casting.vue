@@ -4,18 +4,20 @@
             <div class="card border-0" style="background: rgba(0, 0, 0, 0.3); border-radius: 20px;">
                 <div class="card-body p-4 p-md-5">
                     <div class="row g-4">
-                        <!-- Main Content -->
                         <div class="col-lg-12">
                             <h5
                                 class="text-light fs-4 fw-semibold mb-3 pb-2 border-bottom border-secondary border-opacity-25">
-                                Cast & Characters</h5>
+                                Cast & Characters
+                            </h5>
+
                             <div class="cast-grid">
-                                <div v-for="(actor, index) in castMembers" :key="actor.id" class="cast-card"
-                                    :style="{ animationDelay: `${index * 0.1}s` }" @click="viewActorProfile(actor)">
+                                <div v-for="(actor, index) in castMembers.slice(0, 10)" :key="actor.id"
+                                    class="cast-card" :style="{ animationDelay: `${index * 0.1}s` }"
+                                    @click="viewActorProfile(actor)">
                                     <div class="cast-image-container">
-                                        <img :src="actor.image" :alt="`${actor.name} in ${actor.drama}`"
-                                            :title="`${actor.name} in ${actor.drama}`" class="cast-image" loading="lazy"
-                                            @error="handleImageError" />
+                                        <img :src="actor.image" :alt="`${actor.name} in ${actor.character}`"
+                                            :title="`${actor.name} as ${actor.character}`" class="cast-image"
+                                            loading="lazy" @error="handleImageError" />
                                         <div class="image-overlay">
                                             <i class="bi bi-eye-fill"></i>
                                         </div>
@@ -31,14 +33,12 @@
                                 </div>
                             </div>
 
-                            <!-- Load More Button -->
-                            <div class="text-center mt-4" v-if="hasMoreCast">
-                                <button @click="loadMoreCast" :disabled="loading"
-                                    class="btn btn-outline-warning btn-sm load-more-btn">
-                                    <span v-if="loading" class="spinner-border spinner-border-sm me-2"></span>
-                                    {{ loading ? 'Loading...' : 'View More Cast' }}
+                            <div class="text-center mt-4" v-if="castMembers.length > 10">
+                                <button @click="goToFullCastPage" class="btn btn-outline-warning btn-sm load-more-btn">
+                                    View All Cast
                                 </button>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -46,76 +46,35 @@
         </div>
     </section>
 </template>
+
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import tmdb from '@/tmdb-api'
 
-const router = useRouter()
+const castMembers = ref([])
+const hasMoreCast = ref(false) // Set to true if implementing pagination
 const loading = ref(false)
-const hasMoreCast = ref(true)
 
-const castMembers = ref([
-    {
-        id: 1498,
-        name: 'Park Bo Young',
-        character: 'Tak Dong Kyung',
-        roleType: 'Main Role',
-        image: 'https://i.mydramalist.com/vywkBs.jpg',
-        profileUrl: '/people/1498-park-bo-young',
-        characterUrl: '/character/tak-dong-kyung',
-        drama: 'Doom at Your Service Korean Drama (2021)'
-    },
-    {
-        id: 2576,
-        name: 'Seo In Guk',
-        character: 'Kim Sa Ram / "Myeol Mang"',
-        roleType: 'Main Role',
-        image: 'https://i.mydramalist.com/j64Ry_5s.jpg',
-        profileUrl: '/people/2576-seo-in-guk',
-        characterUrl: '/character/kim-sa-ram-myeol-mang',
-        drama: 'Doom at Your Service Korean Drama (2021)'
-    },
-    {
-        id: 804,
-        name: 'Lee Soo Hyuk',
-        character: 'Cha Joo Ik',
-        roleType: 'Main Role',
-        image: 'https://i.mydramalist.com/k6VbO_5s.jpg',
-        profileUrl: '/people/804-lee-soo-hyuk',
-        characterUrl: '/character/cha-joo-ik',
-        drama: 'Doom at Your Service Korean Drama (2021)'
-    },
-    {
-        id: 6776,
-        name: 'Kang Tae Oh',
-        character: 'Lee Hyun Gyu',
-        roleType: 'Main Role',
-        image: 'https://i.mydramalist.com/qv3mz_5s.jpg',
-        profileUrl: '/people/6776-kang-tae-oh',
-        characterUrl: '/character/lee-hyun-gyu',
-        drama: 'Doom at Your Service Korean Drama (2021)'
-    },
-    {
-        id: 18290,
-        name: 'Shin Do Hyun',
-        character: 'Na Ji Na',
-        roleType: 'Main Role',
-        image: 'https://i.mydramalist.com/qxx6z_5s.jpg',
-        profileUrl: '/people/18290-shin-do-hyun',
-        characterUrl: '/character/na-ji-na',
-        drama: 'Doom at Your Service Korean Drama (2021)'
-    },
-    {
-        id: 11627,
-        name: 'Da Won',
-        character: 'Tak Seon Kyung [Dong Kyung\'s younger brother]',
-        roleType: 'Support Role',
-        image: 'https://i.mydramalist.com/dZRBe_5s.jpg',
-        profileUrl: '/people/11627-da-won',
-        characterUrl: '/character/tak-seon-kyung',
-        drama: 'Doom at Your Service Korean Drama (2021)'
+const route = useRoute()
+const router = useRouter()
+
+const fetchCast = async () => {
+    try {
+        const { data } = await tmdb.get(`/movie/${route.params.id}/credits`)
+        castMembers.value = data.cast.map(cast => ({
+            id: cast.id,
+            name: cast.name,
+            character: cast.character,
+            roleType: cast.order < 5 ? 'Main Role' : 'Support Role',
+            image: cast.profile_path
+                ? `https://image.tmdb.org/t/p/w300${cast.profile_path}`
+                : '/img/no-cast.jpg'
+        }))
+    } catch (error) {
+        console.error('Failed to fetch cast:', error)
     }
-])
+}
 
 const getRoleBadgeClass = (roleType) => {
     switch (roleType) {
@@ -131,32 +90,27 @@ const getRoleBadgeClass = (roleType) => {
 }
 
 const viewActorProfile = (actor) => {
-    console.log('Viewing profile for:', actor.name)
-    // Navigate to actor profile
-    // router.push(actor.profileUrl)
+    // You can replace this with your route logic
+    alert(`View actor profile: ${actor.name}`)
 }
 
 const handleImageError = (event) => {
-    event.target.src = '/placeholder.svg?height=200&width=150'
+    event.target.src = '/img/no-cast.jpg'
 }
 
-const loadMoreCast = async () => {
-    loading.value = true
-
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
-
-    router.push('/')
-    loading.value = false
-    hasMoreCast.value = false // No more cast to load
+const goToFullCastPage = () => {
+  router.push(`/movie/${route.params.id}/cast`)
 }
 
+onMounted(() => {
+    fetchCast()
+})
 </script>
 
 <style scoped>
+/* Same styles as your existing cast-grid (no change needed) */
 .cast-grid {
     display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); */
     grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
     margin-bottom: 2rem;
@@ -198,6 +152,7 @@ const loadMoreCast = async () => {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
     transition: transform 0.3s ease;
 }
 
@@ -293,42 +248,23 @@ const loadMoreCast = async () => {
     transform: translateY(-2px);
     box-shadow: 0 5px 25px rgba(25, 135, 84, 0.3);
 }
+
 @media (max-width: 1024px) {
     .cast-grid {
         grid-template-columns: repeat(4, 1fr);
     }
 }
-/* Mobile Responsiveness */
+
 @media (max-width: 820px) {
     .cast-grid {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 1rem;
     }
-
-    .cast-card {
-        padding: 1rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .actor-name {
-        font-size: 1.1rem;
-    }
-
-    .character-name {
-        font-size: 0.9rem;
-    }
 }
 
 @media (max-width: 480px) {
     .cast-grid {
-        grid-template-columns: repeat(2, 1fr);;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 </style>

@@ -9,6 +9,7 @@ import AllKorean from '@/components/allcategories/AllKorean.vue'
 import AllJapanese from '@/components/allcategories/AllJapanese.vue'
 import AllChinese from '@/components/allcategories/AllChinese.vue'
 import AllTrending from '@/components/allcategories/AllTrending.vue'
+import FullCast from '@/views/pages/drama-detail/FullCast.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,9 +25,15 @@ const router = createRouter({
       component: Login,
     },
     {
-      path: '/drama_details',
-      name: 'drama_details',
+      path: '/movie/:id',
+      name: 'DramaDetail',
       component: DramaDetail,
+      props: true,
+    },
+    {
+      path: '/movie/:id/cast',
+      name: 'FullCast',
+      component: FullCast
     },
     {
       path: '/ongoing',

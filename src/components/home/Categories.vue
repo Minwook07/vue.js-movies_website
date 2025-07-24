@@ -16,7 +16,9 @@
                         <RouterLink :to="`/genre/movie/list`">
                             <div class="card-content position-relative rounded-3">
                                 <div class="card-content-img">
-                                    <img class="card-content-img" src="@/assets/img/Mouse.jpg" alt="Mouse.jpg">
+                                    <img class="card-content-img"
+                                        :src="movie.poster_url || require('@/assets/img/Mouse.jpg')"
+                                        :alt="movie.name" />
                                 </div>
                                 <div class="overlay"></div>
                             </div>
@@ -31,21 +33,50 @@
 </template>
 
 <script setup>
-import { useDramaStore } from '@/stores/dramaStore';
-import { RouterLink } from 'vue-router';
-import { onMounted, ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import tmdb from '@/tmdb-api'
+import { RouterLink } from 'vue-router'
 
 const movies = ref([])
 
 onMounted(async () => {
     try {
         const res = await tmdb.get('/genre/movie/list')
-        movies.value = res.data.genres
+        const genres = res.data.genres
+
+        // Fetch poster for each genre
+        const genresWithImages = await Promise.all(genres.map(async (genre) => {
+            try {
+                const discoverRes = await tmdb.get('/discover/movie', {
+                    params: {
+                        with_genres: genre.id,
+                        sort_by: 'popularity.desc',
+                        page: 1
+                    }
+                })
+
+                const firstMovie = discoverRes.data.results[0]
+                const posterUrl = firstMovie?.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${firstMovie.poster_path}`
+                    : null
+
+                return {
+                    ...genre,
+                    poster_url: posterUrl
+                }
+            } catch (e) {
+                console.error(`Error fetching movie for genre ${genre.name}`, e)
+                return {
+                    ...genre,
+                    poster_url: null
+                }
+            }
+        }))
+
+        movies.value = genresWithImages
     } catch (error) {
-        console.error('Failed to fetch movies:', error)
+        console.error('Failed to fetch genres:', error)
     }
 })
-const dramaStore = useDramaStore();
 
 </script>

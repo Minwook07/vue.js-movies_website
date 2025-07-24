@@ -1,5 +1,4 @@
 <template>
-    <!-- Similar Movie/Drama -->
     <section>
         <div class="container">
             <div class="row">
@@ -9,34 +8,27 @@
                         <!-- Header -->
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <h5 class="text-light mb-0 fw-bold">
-                                <i class="fas fa-fire text-danger me-2"></i>
-                                Popular Series
+                                <i class="fas fa-fire text-danger me-2"></i>Popular Series
                             </h5>
                             <span class="badge bg-danger">Trending</span>
                         </div>
 
                         <!-- Tab Navigation -->
-                        <ul class="nav nav-pills mb-4 bg-secondary rounded-3" role="tablist" style="padding: 4px;">
-                            <li class="nav-item flex-fill" role="presentation">
+                        <ul class="nav nav-pills mb-4 bg-secondary rounded-3" style="padding: 4px;">
+                            <li class="nav-item flex-fill">
                                 <button
                                     :class="['nav-link', 'text-center', 'fw-semibold', 'custom-tab', { 'active-tab': activeTab === 'weekly' }]"
-                                    @click="setActiveTab('weekly')" type="button">
-                                    Weekly
-                                </button>
+                                    @click="setActiveTab('weekly')">Weekly</button>
                             </li>
-                            <li class="nav-item flex-fill" role="presentation">
+                            <li class="nav-item flex-fill">
                                 <button
                                     :class="['nav-link', 'text-center', 'fw-semibold', 'custom-tab', { 'active-tab': activeTab === 'monthly' }]"
-                                    @click="setActiveTab('monthly')" type="button">
-                                    Monthly
-                                </button>
+                                    @click="setActiveTab('monthly')">Monthly</button>
                             </li>
-                            <li class="nav-item flex-fill" role="presentation">
+                            <li class="nav-item flex-fill">
                                 <button
                                     :class="['nav-link', 'text-center', 'fw-semibold', 'custom-tab', { 'active-tab': activeTab === 'all' }]"
-                                    @click="setActiveTab('all')" type="button">
-                                    All Time
-                                </button>
+                                    @click="setActiveTab('all')">All Time</button>
                             </li>
                         </ul>
 
@@ -44,54 +36,41 @@
                         <div class="tab-content">
                             <div class="series-list" style="max-height: 600px; overflow-y: auto;">
                                 <div v-for="(series, index) in seriesData[activeTab]" :key="series.id"
-                                    class="series-item d-flex align-items-start p-3 rounded-3 mb-3 bg-secondary bg-opacity-25 border border-secondary border-opacity-25 hover-effect"
-                                    style="transition: all 0.3s ease;">
+                                    class="series-item d-flex align-items-start p-3 rounded-3 mb-3 bg-secondary bg-opacity-25 border border-secondary border-opacity-25 hover-effect">
+
                                     <!-- Ranking Number -->
                                     <div class="ranking-number me-3 d-flex align-items-center justify-content-center bg-warning text-white rounded-circle fw-bold flex-shrink-0"
-                                        style="width: 30px; height: 30px; min-width: 30px; font-size: 0.8rem;">
-                                        {{ index + 1 }}
-                                    </div>
+                                        style="width: 30px; height: 30px;">{{ index + 1 }}</div>
+
                                     <!-- Series Image -->
-                                    <div class="series-image me-3 flex-shrink-0" style="width: 80px; min-width: 80px;">
+                                    <div class="series-image me-3 flex-shrink-0" style="width: 80px;">
                                         <a href="#" class="d-block position-relative overflow-hidden rounded-2">
-                                            <img :src="series.image" :alt="series.title"
-                                                class="img-fluid w-100 hover-zoom"
-                                                style="height: 110px; object-fit: cover; transition: transform 0.3s ease;">
-                                            <div
-                                                class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 transition-opacity">
-                                                <i class="fas fa-play text-white fa-lg"></i>
-                                            </div>
+                                            <img :src="series.image" :alt="series.title" class="img-fluid w-100"
+                                                style="height: 110px; object-fit: cover;">
                                         </a>
                                     </div>
+
                                     <!-- Series Info -->
-                                    <div class="series-info flex-grow-1 min-width-0">
+                                    <div class="series-info flex-grow-1">
                                         <h6 class="series-title mb-2 fw-bold">
-                                            <a href="#" class="text-light text-decoration-none hover-text-danger">
-                                                {{ series.title }}
-                                            </a>
+                                            <a href="#" class="text-light text-decoration-none">{{ series.title }}</a>
                                         </h6>
-                                        <!-- Year and Episodes -->
                                         <div class="series-meta mb-2">
                                             <small class="text-light">
                                                 <i class="fas fa-calendar-alt me-1"></i>{{ series.year }}
                                                 <span class="mx-2">•</span>
-                                                <i class="fas fa-film me-1"></i>{{ series.episodes }}
+                                                <i class="fas fa-film me-1"></i>N/A
                                             </small>
                                         </div>
-                                        <!-- Genres -->
                                         <div class="series-genres mb-2">
                                             <small class="text-light">
                                                 <strong>Genre:</strong>
                                                 <template v-for="(genre, genreIndex) in series.genres" :key="genre">
-                                                    <a href="#"
-                                                        class="text-info text-decoration-none hover-text-light">{{ genre
-                                                        }}</a>
-                                                    <span v-if="genreIndex < series.genres.length - 1"
-                                                        class="text-light">, </span>
+                                                    <a href="#" class="text-info text-decoration-none">{{ genre }}</a>
+                                                    <span v-if="genreIndex < series.genres.length - 1">, </span>
                                                 </template>
                                             </small>
                                         </div>
-                                        <!-- Rating -->
                                         <div class="series-rating d-flex align-items-center">
                                             <div class="stars me-2">
                                                 <template v-for="n in renderStars(series.rating).fullStars"
@@ -127,99 +106,45 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import CommentVideo from './CommentVideo.vue';
+import { ref, onMounted } from 'vue'
+import tmdb from '@/tmdb-api'
+import CommentVideo from './CommentVideo.vue'
 
 const activeTab = ref('weekly')
+const seriesData = ref({ weekly: [], monthly: [], all: [] })
+const genreMap = ref({})
 
-const seriesData = {
-    weekly: [
-        {
-            id: 1,
-            title: "Crash Landing on You",
-            image: "/img/Crash_Landing_on_You_main_poster.jpg",
-            genres: ["Romance", "Drama", "Comedy"],
-            rating: 4.8,
-            year: "2024",
-            episodes: "16 Episodes"
-        },
-        {
-            id: 2,
-            title: "Battle Through The Heavens Season 5",
-            image: "/img/battle_through_the_heavens2.jpg",
-            genres: ["Action", "Adventure", "Martial Art", "Romance"],
-            rating: 4.5,
-            year: "2024",
-            episodes: "24 Episodes"
-        },
-        {
-            id: 3,
-            title: "May It Please the Court",
-            image: "/img/May_It_Please_the_Court_2022.jpg",
-            genres: ["Thriller", "Drama", "Revenge"],
-            rating: 4.7,
-            year: "2024",
-            episodes: "16 Episodes"
-        },
-        {
-            id: 4,
-            title: "Vincenzo",
-            image: "/img/Vincenzo_2021.jpg",
-            genres: ["Thriller", "Drama", "Survival"],
-            rating: 4.9,
-            year: "2021",
-            episodes: "16 Episodes"
-        },
-        {
-            id: 5,
-            title: "Doom at your service",
-            image: "/img/Doom_at_your_service.jpg",
-            genres: ["Horror", "Comedy", "Mystery"],
-            rating: 4.6,
-            year: "2024",
-            episodes: "16 Episodes"
-        }
-    ],
-    monthly: [
-        {
-            id: 6,
-            title: "Cheo Yong",
-            image: "/img/Cheo_Yong_Drama_Series_2014.jpg",
-            genres: ["Sci-Fi", "Horror", "Drama"],
-            rating: 4.8,
-            year: "2014",
-            episodes: "22 Episodes"
-        },
-        {
-            id: 7,
-            title: "Doctor Stranger",
-            image: "/img/DoctorStranger2014.jpg",
-            genres: ["Fantasy", "Action", "Adventure"],
-            rating: 4.4,
-            year: "2024",
-            episodes: "8 Episodes"
-        }
-    ],
-    all: [
-        {
-            id: 8,
-            title: "Tales of Demons and Gods",
-            image: "/img/tales_of_demons and gods.jpg",
-            genres: ["Crime", "Drama", "Thriller"],
-            rating: 4.9,
-            year: "2008-2013",
-            episodes: "62 Episodes"
-        },
-        {
-            id: 9,
-            title: "Spirit Sword Sovereign",
-            image: "/img/Spirit-Sword-Sovereign.webp",
-            genres: ["Fantasy", "Drama", "Action"],
-            rating: 4.7,
-            year: "2011-2019",
-            episodes: "73 Episodes"
-        }
-    ]
+const fetchGenres = async () => {
+    try {
+        const res = await tmdb.get('/genre/movie/list')
+        res.data.genres.forEach(g => {
+            genreMap.value[g.id] = g.name
+        })
+    } catch (err) {
+        console.error('Failed to fetch genres:', err)
+    }
+}
+
+const fetchPopularSeries = async () => {
+    try {
+        const { data } = await tmdb.get('/movie/popular')
+        const movies = data.results.map(movie => ({
+            id: movie.id,
+            title: movie.title,
+            image: movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                : 'https://via.placeholder.com/300x450?text=No+Image',
+            genres: movie.genre_ids.map(id => genreMap.value[id] || 'Unknown'),
+            rating: (movie.vote_average / 2).toFixed(1), // convert to 5 stars
+            year: movie.release_date ? movie.release_date.slice(0, 4) : 'N/A'
+        }))
+
+        seriesData.value.weekly = movies.slice(0, 5)
+        seriesData.value.monthly = movies.slice(5, 10)
+        seriesData.value.all = movies
+    } catch (err) {
+        console.error('Failed to fetch popular movies:', err)
+    }
 }
 
 const setActiveTab = (tab) => {
@@ -228,12 +153,17 @@ const setActiveTab = (tab) => {
 
 const renderStars = (rating) => {
     const fullStars = Math.floor(rating)
-    const hasHalfStar = rating % 1 !== 0
-    const emptyStars = 5 - Math.ceil(rating)
-
+    const hasHalfStar = rating % 1 >= 0.5
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
     return { fullStars, hasHalfStar, emptyStars }
 }
+
+onMounted(async () => {
+    await fetchGenres()
+    await fetchPopularSeries()
+})
 </script>
+
 
 <style scoped>
 /* Custom Tab Styles - Fixed Active State */
@@ -297,49 +227,49 @@ const renderStars = (rating) => {
 }
 
 @media (min-width: 821px) and (max-width: 1199px) {
-  .series-item {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    text-align: left !important;
-  }
+    .series-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
 
-  .series-image {
-    width: 100% !important;
-    min-width: 0 !important;
-    margin-bottom: 0.75rem !important;
-  }
+    .series-image {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin-bottom: 0.75rem !important;
+    }
 
-  .series-image img {
-    width: 100% !important;
-    height: 200px !important;
-    object-fit: cover;
-    border-radius: 0.5rem;
-  }
+    .series-image img {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
 
-  .ranking-number {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    z-index: 2;
-  }
+    .ranking-number {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        z-index: 2;
+    }
 
-  .series-info {
-    width: 100% !important;
-  }
+    .series-info {
+        width: 100% !important;
+    }
 
-  .series-title {
-    font-size: 1rem !important;
-    margin-bottom: 0.5rem !important;
-  }
+    .series-title {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
 
-  .series-meta small,
-  .series-genres small {
-    font-size: 0.85rem !important;
-  }
+    .series-meta small,
+    .series-genres small {
+        font-size: 0.85rem !important;
+    }
 
-  .series-rating {
-    margin-top: 0.5rem !important;
-  }
+    .series-rating {
+        margin-top: 0.5rem !important;
+    }
 }
 
 
