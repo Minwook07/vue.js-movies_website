@@ -12,17 +12,17 @@
             </div>
             <div class="swiper swiper1 mySwiper" data-swiper-id="3">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide bg-transparent" v-for="drama in dramaStore.drama_lists" :key="drama.id">
-                        <a href="drama-detail.html">
+                    <div class="swiper-slide bg-transparent" v-for="movie in movies" :key="movie.id">
+                        <RouterLink :to="`/genre/movie/list`">
                             <div class="card-content position-relative rounded-3">
                                 <div class="card-content-img">
                                     <img class="card-content-img" src="@/assets/img/Mouse.jpg" alt="Mouse.jpg">
                                 </div>
                                 <div class="overlay"></div>
                             </div>
-                            <button
-                                class="text-start btn p-0 border-0 fw-medium text-secondary-kam fs-5 mt-2">{{ drama.genre }}</button>
-                        </a>
+                            <button class="text-start btn p-0 border-0 fw-medium text-secondary-kam fs-5 mt-2">{{
+                                movie.name }}</button>
+                        </RouterLink>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,20 @@
 
 <script setup>
 import { useDramaStore } from '@/stores/dramaStore';
+import { RouterLink } from 'vue-router';
+import { onMounted, ref } from 'vue'
+import tmdb from '@/tmdb-api'
 
+const movies = ref([])
+
+onMounted(async () => {
+    try {
+        const res = await tmdb.get('/genre/movie/list')
+        movies.value = res.data.genres
+    } catch (error) {
+        console.error('Failed to fetch movies:', error)
+    }
+})
 const dramaStore = useDramaStore();
 
 </script>

@@ -2,19 +2,19 @@
     <section class="py-5">
         <div class="container">
             <div class="card-type-all">
-                <RouterLink to="/all_ongoing" class="card-type-catagories text-secondary-kam">
-                    Ongoing Movies
+                <RouterLink to="/all_anime" class="card-type-catagories text-secondary-kam">
+                    Upcoming
                 </RouterLink>
                 <div class="d-flex gap-3">
-                    <button type="button" data-swiper-id="4" class="btn btn-outline-success btn-previous">
+                    <button type="button" data-swiper-id="8" class="btn btn-outline-success btn-previous">
                         <i class="fa-solid fa-angle-left"></i>
                     </button>
-                    <button type="button" data-swiper-id="4" class="btn btn-success btn-next">
+                    <button type="button" data-swiper-id="8" class="btn btn-success btn-next">
                         <i class="fa-solid fa-angle-right"></i>
                     </button>
                 </div>
             </div>
-            <div class="swiper mySwiper" data-swiper-id="4">
+            <div class="swiper mySwiper" data-swiper-id="8">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide bg-transparent" v-for="movie in movies" :key="movie.id">
                         <div class="card-content position-relative rounded-3">
@@ -55,7 +55,7 @@ const movies = ref([])
 
 onMounted(async () => {
     try {
-        const res = await tmdb.get('/movie/now_playing')
+        const res = await tmdb.get('/movie/upcoming')
         movies.value = res.data.results
     } catch (error) {
         console.error('Failed to fetch movies:', error)

@@ -2,6 +2,7 @@
   <main>
     <HomeToView />
     <ContinueWatch />
+    <UpcomingMovie />
     <TrendingMovie />
     <OnGoingMovie />
     <Categories />
@@ -18,6 +19,7 @@ import Categories from '@/components/home/Categories.vue';
 import PopularAnime from '@/components/home/PopularAnime.vue';
 import { onMounted } from 'vue'
 import { useSwiperStore } from '@/stores/swiperStore'
+import UpcomingMovie from '@/components/home/UpcomingMovie.vue';
 
 const swiperStore = useSwiperStore()
 
