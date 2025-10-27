@@ -47,9 +47,22 @@
 
                         <!-- Category Card -->
                         <template v-else>
-                            <div class="category-card bg-light p-2 rounded text-center">
+                            <div class="card-content position-relative rounded-3">
                                 <RouterLink :to="`/category/${item.id}`">
-                                    {{ item.name }}
+                                    <div class="card-content-img">
+                                        <img v-if="item.posterPath"
+                                            :src="'https://image.tmdb.org/t/p/w500' + item.posterPath" :alt="item.name"
+                                            class="card-content-img" />
+                                        <div v-else
+                                            class="card-content-img bg-secondary d-flex align-items-center justify-content-center">
+                                            <span class="text-white">{{ item.name }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="overlay"></div>
+                                    <div
+                                        class="category-label position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 text-white p-2 text-center">
+                                        {{ item.name }}
+                                    </div>
                                 </RouterLink>
                             </div>
                         </template>
@@ -76,10 +89,49 @@ const props = defineProps({
 const items = ref([])
 const swiperStore = useSwiperStore()
 
+// Fetch a movie poster for a specific genre
+const fetchGenrePoster = async (genreId) => {
+    try {
+        const response = await tmdb.get('/discover/movie', {
+            params: {
+                with_genres: genreId,
+                sort_by: 'popularity.desc',
+                page: 1
+            }
+        })
+        const movies = response.data.results || []
+        return movies.length > 0 ? movies[0].poster_path : null
+    } catch (error) {
+        console.error(`Failed to fetch poster for genre ${genreId}:`, error)
+        return null
+    }
+}
+
 onMounted(async () => {
     try {
         const response = await tmdb.get(props.apiUrl)
-        items.value = response.data.results
+
+        // Handle different API response structures
+        if (props.type === 'category') {
+            // Categories API returns { genres: [...] }
+            const genres = response.data.genres || []
+
+            // Fetch poster for each genre
+            const genresWithPosters = await Promise.all(
+                genres.map(async (genre) => {
+                    const posterPath = await fetchGenrePoster(genre.id)
+                    return {
+                        ...genre,
+                        posterPath
+                    }
+                })
+            )
+
+            items.value = genresWithPosters
+        } else {
+            // Movies API returns { results: [...] }
+            items.value = response.data.results || []
+        }
 
         await nextTick()
         swiperStore.initAll(props.type)

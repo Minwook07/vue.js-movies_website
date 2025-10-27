@@ -5,13 +5,13 @@ const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlOTVhZDBkMDVjMjVmMGE0OTEyNj
 const baseURL = 'https://api.themoviedb.org/3'
 
 const tmdb = axios.create({
-  baseURL,
-  headers: {
-    Authorization: `Bearer ${accessToken}`,
-  },
-  params: {
-    language: 'en-US',
-  },
+	baseURL,
+	headers: {
+		Authorization: `Bearer ${accessToken}`,
+	},
+	params: {
+		language: 'en-US',
+	},
 })
 
 export default tmdb
