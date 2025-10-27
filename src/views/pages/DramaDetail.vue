@@ -89,14 +89,14 @@
                                         style="background: rgba(255,255,255,0.05);">
                                         <Calendar class="me-3 text-info" :size="18" />
                                         <span class="text-white-50">Date aired: <span class="text-white fw-semibold">{{
-                                                movie.release_date }}</span></span>
+                                            movie.release_date }}</span></span>
                                     </div>
 
                                     <div class="detail-item d-flex align-items-center mb-3 p-2 rounded-2"
                                         style="background: rgba(255,255,255,0.05);">
                                         <Clock class="me-3 text-info" :size="18" />
                                         <span class="text-white-50">Status: <span class="text-success fw-semibold">{{
-                                                movie.status }}</span></span>
+                                            movie.status }}</span></span>
                                     </div>
                                 </div>
 
@@ -162,9 +162,9 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import tmdb from '@/tmdb-api'
 
-import BannerHeroPlay from './drama-detail/BannerHeroPlay.vue'
-import Casting from './drama-detail/Casting.vue'
-import SimilarVideo from './drama-detail/SimilarVideo.vue'
+import BannerHeroPlay from '@/components/views/dramadetail/BannerHeroPlay.vue'
+import Casting from '@/components/views/dramadetail/Casting.vue'
+import SimilarVideo from '@/components/views/dramadetail/SimilarVideo.vue'
 import { Calendar, Clock, Globe, Heart, Plus, Share2, User } from 'lucide-vue-next'
 
 const route = useRoute()

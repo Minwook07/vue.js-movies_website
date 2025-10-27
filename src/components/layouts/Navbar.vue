@@ -6,7 +6,6 @@
                 aria-label="Toggle navigation">
                 <span class="text-light fs-2"><i class="fa-solid fa-bars"></i></span>
             </button>
-            <!-- <a class="navbar-brand m-auto text-success fw-bold fs-2" href="#">3 <span class="text-light">KAM</span></a> -->
             <RouterLink class="navbar-brand m-auto text-success fw-bold fs-2" to="/">
                 <img src="/img/3kam_logo.png" width="100px" alt="">
             </RouterLink>
@@ -23,14 +22,23 @@
                             Movies
                         </a>
                         <ul class="dropdown-menu">
-                            <li><RouterLink class="dropdown-item fs-paragrap-default" to="/all_chinese">Chinese Movies</RouterLink></li>
-                            <li><RouterLink class="dropdown-item fs-paragrap-default" to="/all_korean">Korean Movies</RouterLink></li>
-                            <li><RouterLink class="dropdown-item fs-paragrap-default" to="#">Khmer Movies</RouterLink></li>
-                            <li><RouterLink class="dropdown-item fs-paragrap-default" to="/all_japanese">Japanese Movies</RouterLink></li>
+                            <li>
+                                <RouterLink class="dropdown-item fs-paragrap-default" to="/">Chinese Movies</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="dropdown-item fs-paragrap-default" to="/">Korean Movies</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="dropdown-item fs-paragrap-default" to="/">Khmer Movies</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="dropdown-item fs-paragrap-default" to="/">Japanese Movies
+                                </RouterLink>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <RouterLink class="nav-link pc-1" aria-current="page" to="/all_trending">Trending</RouterLink>
+                        <RouterLink class="nav-link pc-1" aria-current="page" to="/">Trending</RouterLink>
                     </li>
                     <li class="nav-item">
                         <RouterLink class="nav-link pc-1" aria-current="page" to="#">About us</RouterLink>

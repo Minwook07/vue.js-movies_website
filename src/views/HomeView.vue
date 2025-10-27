@@ -1,30 +1,18 @@
 <template>
-  <main>
-    <HomeToView />
-    <ContinueWatch />
-    <UpcomingMovie />
-    <TrendingMovie />
-    <OnGoingMovie />
-    <Categories />
-    <PopularAnime /> 
-  </main>
+	<main>
+		<HomeToView />
+		<ContinueWatch />
+		<MovieSwipper title="Upcoming Movies" apiUrl="/movie/upcoming" swiperId="8" routeLink="/all/upcoming" />
+		<MovieSwipper title="Trending Movies" apiUrl="/movie/popular" swiperId="1" routeLink="/all/trending" />
+		<MovieSwipper title="Now Playing" apiUrl="/movie/now_playing" swiperId="9" routeLink="/all/nowplaying" />
+		<MovieSwipper title="Categories" apiUrl="/genre/movie/list" swiperId="20" routeLink="/all/categories"
+			type="category" />
+		<MovieSwipper title="Top Rated" apiUrl="/movie/top_rated" swiperId="10" routeLink="/all/top_rated" />
+	</main>
 </template>
 
 <script setup>
-import HomeToView from '@/components/home/HomeToView.vue';
-import ContinueWatch from '@/components/home/ContinueWatch.vue';
-import TrendingMovie from '@/components/home/TrendingMovie.vue';
-import OnGoingMovie from '@/components/home/OnGoingMovie.vue';
-import Categories from '@/components/home/Categories.vue';
-import PopularAnime from '@/components/home/PopularAnime.vue';
-import { onMounted } from 'vue'
-import { useSwiperStore } from '@/stores/swiperStore'
-import UpcomingMovie from '@/components/home/UpcomingMovie.vue';
-
-const swiperStore = useSwiperStore()
-
-onMounted(() => {
-  swiperStore.initDramaList()
-  swiperStore.initCategoriesList()
-})
+import HomeToView from '@/components/views/home/HomeToView.vue'
+import ContinueWatch from '@/components/views/home/ContinueWatch.vue'
+import MovieSwipper from '@/components/views/swipper/MovieSwipper.vue';
 </script>
